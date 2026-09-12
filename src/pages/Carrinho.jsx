@@ -10,8 +10,8 @@ function Carrinho() {
   return (
     <main>
       <header>
-        <img src={logo} alt="Logo da loja MinosPet" width="220" />
-        <h1>MinosPet</h1>
+        <img src={logo} alt="Logo da loja MimosPet" width="220" />
+        <h1>MimosPet</h1>
         <p>Confira os produtos antes de finalizar a compra.</p>
       </header>
 
