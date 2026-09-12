@@ -10,7 +10,7 @@ import { produtosIniciais } from "./data/produtos";
 function App() {
   const [carrinho, setCarrinho] = useState(produtosIniciais);
 
-  function adicionarAoCarrinho(produtoSelecionado) {
+  function adicionarAoCarrinho(produtoSelecionado, quantidadeEscolhida = 1) {
     setCarrinho((carrinhoAtual) => {
       const produtoExistente = carrinhoAtual.find(
         (produto) => produto.id === produtoSelecionado.id
@@ -19,16 +19,30 @@ function App() {
       if (produtoExistente) {
         return carrinhoAtual.map((produto) =>
           produto.id === produtoSelecionado.id
-            ? { ...produto, quantidade: produto.quantidade + 1 }
+            ? {
+                ...produto,
+                quantidade: produto.quantidade + quantidadeEscolhida,
+              }
             : produto
         );
       }
 
-      return [...carrinhoAtual, produtoSelecionado];
+      return [
+        ...carrinhoAtual,
+        {
+          ...produtoSelecionado,
+          quantidade: quantidadeEscolhida,
+        },
+      ];
     });
   }
 
-  return (
+  const totalItens = carrinho.reduce(
+    (total, produto) => total + produto.quantidade,
+    0
+  );
+
+    return (
     <Routes>
       <Route
         path="/"

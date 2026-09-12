@@ -8,10 +8,32 @@ import logo from "../assets/img/logo_suri.png";
 function Carrinho({ produtos }) {
   return (
     <main>
-      <header>
-        <img src={logo} alt="Logo da loja MimosPet" width="220" />
-        <h1>MimosPet</h1>
-        <p>Confira os produtos antes de finalizar a compra.</p>
+      <header className="hero">
+        <div className="hero-logo">
+          <img
+            src={logo}
+            alt="Logo da loja MimosPet"
+            className="logo-mimospet"
+          />
+        </div>
+
+        <div className="hero-conteudo">
+          <span className="hero-selo">🐾 Amor em cada escolha</span>
+
+          <h1>Mimos para quem faz parte da família.</h1>
+
+          <p>
+            Produtos escolhidos para deixar a rotina do seu pet mais feliz,
+            confortável e divertida.
+          </p>
+
+          <div className="hero-beneficios">
+            <span>✓ Compra segura</span>
+            <span>✓ Produtos selecionados</span>
+            <span>✓ Muito carinho</span>
+          </div>
+
+        </div>
       </header>
 
       <section aria-labelledby="titulo-carrinho">
@@ -24,10 +46,10 @@ function Carrinho({ produtos }) {
 
       <ResumoCompra produtos={produtos} />
 
-        <div className="acoes-carrinho">
-            <Link to="/produtos">Continuar comprando</Link>
-            <Link to="/pagamento">Finalizar compra</Link>
-        </div>
+      <div className="acoes-carrinho">
+        <Link to="/produtos">Selecionar mais minos</Link>
+        <Link to="/pagamento">Finalizar compra</Link>
+      </div>
     </main>
   );
 }
