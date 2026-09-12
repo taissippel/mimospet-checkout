@@ -1,6 +1,6 @@
 // Aqui vou usar: MAP - para percorrer o array; KEY PRODUTO ID - para ser identificado cada produto; PRODUTO = PRODUTO - para enviar o objeto por props
 
-
+import { Link } from "react-router-dom";
 import ItemCarrinho from "../components/ItemCarrinho";
 import ResumoCompra from "../components/ResumoCompra";
 import { produtos } from "../data/produtos";
@@ -23,7 +23,7 @@ function Carrinho() {
 
       <ResumoCompra produtos={produtos} />
 
-      <button type="button">Finalizar compra</button>
+      <Link to="/pagamento">Finalizar compra</Link>
     </main>
   );
 }
