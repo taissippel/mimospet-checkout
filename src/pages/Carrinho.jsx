@@ -4,12 +4,14 @@ import { Link } from "react-router-dom";
 import ItemCarrinho from "../components/ItemCarrinho";
 import ResumoCompra from "../components/ResumoCompra";
 import { produtos } from "../data/produtos";
+import logo from "../assets/img/logo_suri.png";
 
 function Carrinho() {
   return (
     <main>
       <header>
-        <h1>Petashop</h1>
+        <img src={logo} alt="Logo da loja MinosPet" width="220" />
+        <h1>MinosPet</h1>
         <p>Confira os produtos antes de finalizar a compra.</p>
       </header>
 

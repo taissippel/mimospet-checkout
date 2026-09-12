@@ -2,8 +2,11 @@
   box-sizing: border-box;
 }
 
-html {
+:root {
   font-family: Arial, Helvetica, sans-serif;
+  color: #24323d;
+  background-color: #f4f7f6;
+  line-height: 1.5;
 }
 
 body {
@@ -12,7 +15,147 @@ body {
   min-height: 100vh;
 }
 
-button,
+main {
+  width: min(100% - 32px, 1000px);
+  margin: 40px auto;
+}
+
+header {
+  margin-bottom: 32px;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  color: #174c4f;
+  font-size: 2rem;
+}
+
+section {
+  display: grid;
+  gap: 16px;
+}
+
+section > h2 {
+  margin-bottom: 0;
+}
+
+article {
+  padding: 20px;
+  border: 1px solid #dce5e3;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
+}
+
+article h2 {
+  color: #174c4f;
+  font-size: 1.2rem;
+}
+
+article p:last-child {
+  margin-bottom: 0;
+  font-weight: bold;
+  color: #d76532;
+}
+
+aside {
+  margin: 24px 0;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #e1efed;
+}
+
+aside h2 {
+  color: #174c4f;
+}
+
+form {
+  max-width: 560px;
+  padding: 24px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
+}
+
+form div {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
 input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #a9b9b6;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+input:focus {
+  border-color: #174c4f;
+  outline: 3px solid rgb(23 76 79 / 20%);
+}
+
+input[aria-invalid="true"] {
+  border-color: #b42318;
+}
+
+[role="alert"] {
+  margin-top: 6px;
+  margin-bottom: 0;
+  color: #b42318;
+  font-size: 0.9rem;
+}
+
+button,
+a {
+  display: inline-block;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 8px;
+  background-color: #d76532;
+  color: #ffffff;
   font: inherit;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button:hover,
+a:hover {
+  background-color: #b94f21;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgb(215 101 50 / 35%);
+  outline-offset: 3px;
+}
+
+button:disabled {
+  background-color: #9aa7a5;
+  cursor: not-allowed;
+}
+
+@media (min-width: 700px) {
+  section {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  section > h2 {
+    grid-column: 1 / -1;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
 }
