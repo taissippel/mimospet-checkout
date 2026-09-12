@@ -3,10 +3,9 @@
 import { Link } from "react-router-dom";
 import ItemCarrinho from "../components/ItemCarrinho";
 import ResumoCompra from "../components/ResumoCompra";
-import { produtos } from "../data/produtos";
 import logo from "../assets/img/logo_suri.png";
 
-function Carrinho() {
+function Carrinho({ produtos }) {
   return (
     <main>
       <header>
@@ -25,7 +24,10 @@ function Carrinho() {
 
       <ResumoCompra produtos={produtos} />
 
-      <Link to="/pagamento">Finalizar compra</Link>
+        <div className="acoes-carrinho">
+            <Link to="/produtos">Continuar comprando</Link>
+            <Link to="/pagamento">Finalizar compra</Link>
+        </div>
     </main>
   );
 }

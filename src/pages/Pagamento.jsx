@@ -4,7 +4,7 @@ import { z } from "zod";
 import { useNavigate } from "react-router-dom";
 import { usePagamento } from "../hooks/usePagamento";
 import ResumoCompra from "../components/ResumoCompra";
-import { produtos } from "../data/produtos";
+
 
 const formularioSchema = z.object({
   titular: z.string().trim().min(1, "Informe o nome do titular."),
@@ -29,7 +29,7 @@ const formularioSchema = z.object({
   cvv: z.string().regex(/^\d{3}$/, "Informe um CVV com 3 dígitos."),
 });
 
-function Pagamento() {
+function Pagamento({ produtos }) {
   const navigate = useNavigate();
 
   const { processando, processarPagamento } = usePagamento();
