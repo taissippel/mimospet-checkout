@@ -4,6 +4,11 @@ Aplicação de checkout desenvolvida em React para simular uma compra em uma loj
 
 O projeto foi criado como atividade avaliativa do curso de Desenvolvimento Front-End React do SENAI/SCTec.
 
+## Acesso ao projeto
+
+- [Aplicação publicada](https://taissippel.github.io/mimospet-checkout/)
+- [Repositório no GitHub](https://github.com/taissippel/mimospet-checkout)
+
 ## Objetivo
 
 Permitir que o usuário selecione produtos, defina quantidades, confira o carrinho, preencha dados fictícios de cartão e simule o processamento de uma compra, onde será demonstrado uma tentativa de fraude e a compra realizada com sucesso.
