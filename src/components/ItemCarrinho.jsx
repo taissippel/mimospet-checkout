@@ -5,6 +5,10 @@ function ItemCarrinho({ produto }) {
 
   return (
     <article>
+      <span className="icone-produto" aria-hidden="true">
+        {produto.icone}
+      </span>
+      
       <h2>{produto.nome}</h2>
 
       <p>

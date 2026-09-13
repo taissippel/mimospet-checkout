@@ -3,16 +3,37 @@
 import { Link } from "react-router-dom";
 import ItemCarrinho from "../components/ItemCarrinho";
 import ResumoCompra from "../components/ResumoCompra";
-import { produtos } from "../data/produtos";
 import logo from "../assets/img/logo_suri.png";
 
-function Carrinho() {
+function Carrinho({ produtos }) {
   return (
     <main>
-      <header>
-        <img src={logo} alt="Logo da loja MimosPet" width="220" />
-        <h1>MimosPet</h1>
-        <p>Confira os produtos antes de finalizar a compra.</p>
+      <header className="hero">
+        <div className="hero-logo">
+          <img
+            src={logo}
+            alt="Logo da loja MimosPet"
+            className="logo-mimospet"
+          />
+        </div>
+
+        <div className="hero-conteudo">
+          <span className="hero-selo">🐾 Amor em cada escolha</span>
+
+          <h1>Mimos para quem faz parte da família.</h1>
+
+          <p>
+            Produtos escolhidos para deixar a rotina do seu pet mais feliz,
+            confortável e divertida.
+          </p>
+
+          <div className="hero-beneficios">
+            <span>✓ Compra segura</span>
+            <span>✓ Produtos selecionados</span>
+            <span>✓ Muito amor envolvido</span>
+          </div>
+
+        </div>
       </header>
 
       <section aria-labelledby="titulo-carrinho">
@@ -25,7 +46,10 @@ function Carrinho() {
 
       <ResumoCompra produtos={produtos} />
 
-      <Link to="/pagamento">Finalizar compra</Link>
+      <div className="acoes-carrinho">
+        <Link to="/produtos" translate="no">Selecionar mais minos</Link>
+        <Link to="/pagamento" translate="no">Finalizar compra</Link>
+      </div>
     </main>
   );
 }
