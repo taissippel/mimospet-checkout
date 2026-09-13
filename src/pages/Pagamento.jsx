@@ -29,6 +29,26 @@ const formularioSchema = z.object({
   cvv: z.string().regex(/^\d{3}$/, "Informe um CVV com 3 dígitos."),
 });
 
+function formatarNumeroCartao(valor) {
+  const apenasNumeros = valor.replace(/\D/g, "").slice(0, 16);
+
+  return apenasNumeros.replace(/(\d{4})(?=\d)/g, "$1 ");
+}
+
+function formatarValidade(valor) {
+  const apenasNumeros = valor.replace(/\D/g, "").slice(0, 4);
+
+  if (apenasNumeros.length <= 2) {
+    return apenasNumeros;
+  }
+
+  return `${apenasNumeros.slice(0, 2)}/${apenasNumeros.slice(2)}`;
+}
+
+function formatarCvv(valor) {
+  return valor.replace(/\D/g, "").slice(0, 3);
+}
+
 function Pagamento({ produtos }) {
   const navigate = useNavigate();
 
@@ -37,6 +57,7 @@ function Pagamento({ produtos }) {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(formularioSchema),
@@ -85,11 +106,19 @@ function Pagamento({ produtos }) {
             inputMode="numeric"
             autoComplete="cc-number"
             placeholder="0000 0000 0000 0000"
+            maxLength={19}
             aria-invalid={errors.numeroCartao ? "true" : "false"}
             aria-describedby={
               errors.numeroCartao ? "erro-numero-cartao" : undefined
             }
             {...register("numeroCartao")}
+            onChange={(evento) => {
+              const valorFormatado = formatarNumeroCartao(evento.target.value);
+
+              setValue("numeroCartao", valorFormatado, {
+                shouldValidate: true,
+              });
+            }}
           />
 
           {errors.numeroCartao && (
@@ -108,9 +137,17 @@ function Pagamento({ produtos }) {
             inputMode="numeric"
             autoComplete="cc-exp"
             placeholder="MM/AA"
+            maxLength={5}
             aria-invalid={errors.validade ? "true" : "false"}
             aria-describedby={errors.validade ? "erro-validade" : undefined}
             {...register("validade")}
+            onChange={(evento) => {
+              const valorFormatado = formatarValidade(evento.target.value);
+
+              setValue("validade", valorFormatado, {
+                shouldValidate: true,
+              });
+            }}
           />
 
           {errors.validade && (
@@ -129,9 +166,17 @@ function Pagamento({ produtos }) {
             inputMode="numeric"
             autoComplete="cc-csc"
             placeholder="000"
+            maxLength={3}
             aria-invalid={errors.cvv ? "true" : "false"}
             aria-describedby={errors.cvv ? "erro-cvv" : undefined}
             {...register("cvv")}
+            onChange={(evento) => {
+              const valorFormatado = formatarCvv(evento.target.value);
+
+              setValue("cvv", valorFormatado, {
+                shouldValidate: true,
+              });
+            }}
           />
 
           {errors.cvv && (
@@ -142,7 +187,7 @@ function Pagamento({ produtos }) {
         </div>
 
         <button type="submit" disabled={processando}>
-            {processando ? "Processando compra..." : "Pagar"}
+          {processando ? "Processando compra..." : "Pagar"}
         </button>
       </form>
     </main>

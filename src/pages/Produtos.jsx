@@ -98,9 +98,12 @@ function Produtos({ adicionarAoCarrinho, totalItens }) {
             <button
               type="button"
               className="botao-adicionar"
+              translate="no"
+              aria-label={`Adicionar ${produto.nome} ao carrinho`}
               onClick={() => adicionarProduto(produto)}
             >
-              Adicionar ao carrinho
+              <span>Adicionar</span>
+              <span>ao carrinho</span>
             </button>
           </article>
         ))}

@@ -20,9 +20,9 @@ function App() {
         return carrinhoAtual.map((produto) =>
           produto.id === produtoSelecionado.id
             ? {
-                ...produto,
-                quantidade: produto.quantidade + quantidadeEscolhida,
-              }
+              ...produto,
+              quantidade: produto.quantidade + quantidadeEscolhida,
+            }
             : produto
         );
       }
@@ -42,7 +42,7 @@ function App() {
     0
   );
 
-    return (
+  return (
     <Routes>
       <Route
         path="/"
@@ -51,7 +51,12 @@ function App() {
 
       <Route
         path="/produtos"
-        element={<Produtos adicionarAoCarrinho={adicionarAoCarrinho} />}
+        element={
+          <Produtos
+            adicionarAoCarrinho={adicionarAoCarrinho}
+            totalItens={totalItens}
+          />
+        }
       />
 
       <Route

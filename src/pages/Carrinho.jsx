@@ -30,7 +30,7 @@ function Carrinho({ produtos }) {
           <div className="hero-beneficios">
             <span>✓ Compra segura</span>
             <span>✓ Produtos selecionados</span>
-            <span>✓ Muito carinho</span>
+            <span>✓ Muito amor envolvido</span>
           </div>
 
         </div>
@@ -47,8 +47,8 @@ function Carrinho({ produtos }) {
       <ResumoCompra produtos={produtos} />
 
       <div className="acoes-carrinho">
-        <Link to="/produtos">Selecionar mais minos</Link>
-        <Link to="/pagamento">Finalizar compra</Link>
+        <Link to="/produtos" translate="no">Selecionar mais minos</Link>
+        <Link to="/pagamento" translate="no">Finalizar compra</Link>
       </div>
     </main>
   );

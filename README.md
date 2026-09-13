@@ -1,16 +1,169 @@
-# React + Vite
+# MimosPet 🐾
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Aplicação de checkout desenvolvida em React para simular uma compra em uma loja de produtos para pets.
 
-Currently, two official plugins are available:
+O projeto foi criado como atividade avaliativa do curso de Desenvolvimento Front-End React do SENAI/SCTec.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Objetivo
 
-## React Compiler
+Permitir que o usuário selecione produtos, defina quantidades, confira o carrinho, preencha dados fictícios de cartão e simule o processamento de uma compra, onde será demonstrado uma tentativa de fraude e a compra realizada com sucesso.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Funcionalidades
 
-## Expanding the Oxlint configuration
+- Catálogo com seis produtos;
+- Seleção de diferentes produtos;
+- Controle de quantidade;
+- Carrinho com itens, quantidades e subtotais;
+- Cálculo automático do valor total;
+- Navegação entre páginas com React Router;
+- Formulário com React Hook Form;
+- Validação com Zod;
+- Máscara automática para cartão e validade;
+- Limite de três dígitos para o CVV;
+- Simulação assíncrona de pagamento;
+- Botão desabilitado durante o processamento;
+- Tela de sucesso;
+- Tela de falha;
+- Interface responsiva;
+- Feedback acessível ao adicionar produtos;
+- Identidade visual personalizada da MimosPet.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Regra da simulação
+
+A aplicação aceita qualquer número de cartão que tenha 16 dígitos, exceto quando todos os dígitos são iguais, que não valida a compra mostrando "Tentativa de Fraude".
+
+### Exemplo de falha
+
+```text
+1111 1111 1111 1111
+```
+
+A aplicação abre a tela de falha e apresenta a mensagem obrigatória:
+
+```text
+tentativa de golpe
+```
+
+### Exemplo de sucesso
+
+```text
+4111 1111 1111 1111
+```
+
+## Validações do formulário
+
+- Titular obrigatório;
+- Cartão com exatamente 16 números;
+- Espaçamento automático a cada quatro números;
+- Validade no formato `MM/AA`;
+- Mês entre `01` e `12`;
+- CVV com exatamente três números;
+- Espaços e hifens do cartão são desconsiderados na validação.
+
+## Tecnologias
+
+- React
+- JavaScript
+- JSX
+- CSS
+- Vite
+- React Router
+- React Hook Form
+- Zod
+- Git e GitHub
+
+## Rotas
+
+| Rota | Página |
+| --- | --- |
+| `/` | Carrinho |
+| `/produtos` | Catálogo de produtos |
+| `/pagamento` | Formulário de pagamento |
+| `/sucesso` | Compra aprovada |
+| `/falha` | Compra não aprovada |
+
+## Estrutura principal
+
+```text
+src/
+├── assets/
+│   └── img/
+├── components/
+│   ├── ItemCarrinho.jsx
+│   └── ResumoCompra.jsx
+├── data/
+│   └── produtos.js
+├── hooks/
+│   └── usePagamento.js
+├── pages/
+│   ├── Carrinho.jsx
+│   ├── Produtos.jsx
+│   ├── Pagamento.jsx
+│   ├── Sucesso.jsx
+│   └── Falha.jsx
+├── utils/
+│   └── pagamento.js
+├── App.jsx
+├── index.css
+└── main.jsx
+```
+
+## Como executar
+
+Clone o repositório:
+
+```bash
+git clone URL-DO-REPOSITORIO
+```
+
+Entre na pasta:
+
+```bash
+cd patashop
+```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+Inicie o projeto:
+
+```bash
+npm run dev
+```
+
+Abra no navegador o endereço apresentado pelo Vite.
+
+## Build e verificação
+
+Gerar a versão de produção:
+
+```bash
+npm run build
+```
+
+Verificar o código:
+
+```bash
+npm run lint
+```
+
+## Melhorias futuras
+
+- Remover produtos do carrinho;
+- Diminuir quantidades diretamente no carrinho;
+- Salvar o carrinho no `localStorage`;
+- Carregar produtos por uma API;
+- Criar filtro e busca de produtos.
+
+## Uso de inteligência artificial
+
+A inteligência artificial foi utilizada como apoio para explicar conceitos, organizar etapas, revisar erros e sugerir melhorias de acessibilidade e responsividade.
+
+Todos os trechos foram adaptados ao projeto, testados no navegador e validados de acordo com os requisitos da atividade.
+
+## Autora
+
+Taís Sippel
